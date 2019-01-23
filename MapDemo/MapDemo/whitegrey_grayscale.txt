@@ -1,0 +1,1167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--	                                    erlinyou Map Script
+	1. Item: 
+	    This map style script file is used to set the color and dimension of map element.Each 
+	map element has a similar structure:
+		<item name="MainRoad">
+			<param key="clrBody" value="200;24;32;200;24;32"/>
+			<param key="clrBorder" value="136;16;16;136;16;16"/>
+			<param key="width" value="22"/>
+			<param key="borderWidth" value ="5"/>
+			<param key="minWidth" value="2"/>
+		</item>
+	The item block is embraced by <item name="XXX"> and </item>, the "name" is the unique ID of
+	each map item, you not need modify it. 
+	
+	2. Parameter
+		The basic parameter setting is like this: 
+		<param key="XXX" value="XXX"/> 
+	The "key" is the name of parameter. You don't need to change the value of "key"	, you just 
+	change the "value" to set the parameter. 
+	    If the parameters is a number ("width", road width) or a string("font", text font),	you 
+	set it directly to "value". 
+	    If it is a color("clrBody", CoLoR of the road body), the value should be a six-section
+	parameter, the first three sections are the RGB (Red, Green, Blue, the value of each color
+	is between 0 to 255, this three colors are mixed to get one color in computer, higher value
+	means the color has a high proportion in the mixed color) value of the color in DayMode, the
+	last three sections are the RGB value of the color in NightMode, each section is separated 
+	by ";". Let's take the arrow of path as a example:
+	    The origin value is:
+		Day Mode: 255;255;0 = Yellow
+		Night Mode: 255;255;0 = Yellow
+	    If you want to change the day mode color into blue and night mode color into green, the
+	parameter will become:
+		<param key="clrArrow" value="0;0;255;0;255;0"/>
+	    Changing the details of the color parameter, you can get a fantastic map. It's just like
+	a painting game, no?
+
+	3. GlobalGroup:
+	    This block contains the global elements of the map, such as background color, guidance path,
+	guidance arrow, POI list, etc. You can get more information by the commentary line and the value
+	of "key" section.
+	
+	4. ErrorCheck:
+	    There is three options for ErroCheck when your value is illegal. If type = 1, a message box 
+	will inform you the error and the default value will be used; If type = 2, the default will be 
+	used without the message box; If type = 3, the maximum or minimum value will is set according to 
+	your value is bigger or smaller than the legal range.
+-->
+
+<MapSetting>
+	<ErrorCheck type=1/>
+	<ItemGroup>
+		<!--Road-->
+		<item name="MainRoad">
+			<param key="clrBody" value="222;219;222;245;155;0"/>
+			<param key="clrBorder" value="200;200;200;255;220;148"/>
+			<!--<param key="clrBody" value="251;203;128;245;155;0"/>
+			<param key="clrBorder" value="218;164;109;255;220;148"/>-->
+			<param key="width" value="30"/>
+			<param key="borderWidth" value ="2"/>
+			<param key="minWidth" value="2"/>
+			<param key="fontSize" value="10"/>
+			<param key="clrNameBody" value="200;200;200;255;255;255"/>
+			<param key="clrNameBorder" value="255;255;255;0;0;0"/>
+		</item>
+		<item name="FirstClassRoad">
+			<param key="clrBody" value="222;219;222;245;155;0"/>
+			<param key="clrBorder" value="200;200;200;255;244;169"/>		
+			<!--<param key="clrBody" value="255;225;165;220;180;10"/>
+			<param key="clrBorder" value="215;185;106;255;244;169"/>-->
+			<param key="clrNoBoder" value="222;219;222;170;140;50"/>
+			<param key="width" value="30"/>
+			<param key="borderWidth" value ="2"/>
+			<param key="minWidth" value="2"/>
+			<param key="fontSize" value="10"/>
+			<param key="clrNameBody" value="200;200;200;255;255;255"/>
+			<param key="clrNameBorder" value="255;255;255;0;0;0"/>
+		</item>
+		<item name="SecondClassRoad">
+			<!--<param key="clrBody" value="255;255;255;225;210;145"/>
+			<param key="clrBorder" value="165;165;165;195;175;95"/>
+			<param key="clrNoBoder" value="255;255;255;170;140;50"/>-->
+			<param key="clrBody" value="255;255;255;220;180;10"/>
+			<param key="clrBorder" value="200;200;200;255;244;169"/>
+			<param key="clrNoBoder" value="200;200;200;170;140;50"/>
+			<param key="width" value="25"/>
+			<param key="borderWidth" value ="2"/>
+			<param key="minWidth" value="2"/>
+			<param key="fontSize" value="10"/>
+			<!--<param key="clrNameBody" value="120;120;120;230;230;230"/>
+			<param key="clrNameBorder" value="255;255;255;0;0;0"/>-->
+			<param key="clrNameBody" value="55;55;55;255;255;255"/>
+			<param key="clrNameBorder" value="255;255;255;0;0;0"/>			
+		</item>
+		<item name="ThirdClassRoad">
+			<param key="clrBody" value="255;255;255;200;190;140"/>
+			<param key="clrBorder" value="165;165;165;130;100;20"/>
+			<param key="clrNoBoder" value="250;250;250;165;165;110"/>
+			<param key="width" value="18"/>
+			<param key="borderWidth" value ="3"/>
+			<param key="minWidth" value="2"/>
+			<param key="fontSize" value="10"/>
+			<!--<param key="clrNameBody" value="130;130;130;230;230;230"/>-->
+			<param key="clrNameBody" value="55;55;55;200;200;200"/>
+			<param key="clrNameBorder" value="255;255;255;0;0;0"/>
+		</item>
+		<item name="FourthClassRoad">
+			<param key="clrBody" value="255;255;255;140;140;140"/>
+			<param key="clrBorder" value="165;165;165;65;65;65"/>
+			<param key="clrNoBoder" value="245;245;245;120;120;120"/>
+			<param key="width" value="10"/>
+			<param key="borderWidth" value ="4"/>
+			<param key="minWidth" value="2"/>
+			<param key="fontSize" value="10"/>
+			<!-- <param key="clrNameBody" value="130;130;130;210;210;210"/> -->
+			<param key="clrNameBody" value="55;55;55;200;200;200"/>
+			<param key="clrNameBorder" value="255;255;255;0;0;0"/>
+		</item>
+		<!-- <item name="PedestrianRoad"> -->
+			<!-- <param key="clrBody" value="188;184;156;120;120;120"/> -->
+			<!-- <param key="clrBorder" value="145;145;125;65;65;65"/> -->
+			<!-- <param key="clrNoBoder" value="188;184;156;100;100;100"/> -->
+			<!-- <param key="width" value="1"/> -->
+			<!-- <param key="borderWidth" value ="1"/> -->
+			<!-- <param key="minWidth" value="1"/> -->
+			<!-- <param key="fontSize" value="10"/> -->
+			<!-- <param key="clrNameBody" value="147;142;126;210;210;210"/> -->
+			<!-- <param key="clrNameBorder" value="255;255;255;0;0;0"/> -->
+		<!-- </item> -->
+		<item name="PedestrianRoad">
+			<!--<param key="clrBody" value="225;225;225;120;120;120"/>-->
+			<!--<param key="clrBorder" value="165;165;165;65;65;65"/>-->
+			<!--<param key="clrNoBoder" value="255;255;255;100;100;100"/>-->			
+			<param key="clrBody" value="255;255;255;140;140;140"/>
+			<param key="clrBorder" value="165;165;165;65;65;65"/>
+			<param key="clrNoBoder" value="245;245;245;120;120;120"/>
+			<param key="width" value="5"/>
+			<param key="borderWidth" value ="2"/>
+			<param key="minWidth" value="2"/>
+			<param key="fontSize" value="10"/>
+			<!-- <param key="clrNameBody" value="147;142;126;210;210;210"/> -->
+			<param key="clrNameBody" value="55;55;55;200;200;200"/>
+			<param key="clrNameBorder" value="255;255;255;0;0;0"/>
+		</item>
+		<!--Road end-->
+		
+		<!--Ortho road-->
+		<item name="OrthoMainRoad">
+			<param key="clrBody" value="222;219;222;245;155;0"/>
+			<param key="clrBorder" value="200;200;200;255;220;148"/>
+			<param key="width" value="22"/>
+			<param key="borderWidth" value ="5"/>
+			<param key="minWidth" value="2"/>			
+			<param key="fontSize" value="13"/>
+			<param key="clrNameBody" value="255;204;0;255;204;0"/>
+			<param key="clrNameBorder" value="0;0;0;0;0;0"/>
+		</item>
+		<item name="OrthoFirstClassRoad">
+			<param key="clrBody" value="231;224;24;231;224;24"/>
+			<param key="clrBorder" value="222;203;151;158;95;49"/>
+			<param key="clrNoBoder" value="229;211;176;170;140;50"/>,
+			<param key="width" value="22"/>
+			<param key="borderWidth" value ="5"/>
+			<param key="minWidth" value="2"/>
+			<param key="fontSize" value="13"/>
+			<param key="clrNameBody" value="255;204;0;255;204;0"/>
+			<param key="clrNameBorder" value="0;0;0;0;0;0"/>
+		</item>
+		<item name="OrthoSecondClassRoad">
+			<param key="clrBody" value="255;248;114;255;248;114"/>
+			<param key="clrBorder" value="200;200;200;107;100;82"/>
+			<param key="width" value="20"/>
+			<param key="borderWidth" value ="3"/>
+			<param key="minWidth" value="2"/>			
+			<param key="fontSize" value="13"/>
+			<param key="clrNameBody" value="200;200;200;250;240;130"/>
+			<param key="clrNameBorder" value="255;255;255;20;0;0"/>
+		</item>
+		<!--Ortho road end-->		
+		<!--ferry-->
+		<item name = "CommonFerry">
+			<param key="clrBody" value="140;180;255;0;180;255"/>
+            <param key="fontSize" value="10"/>
+            <param key="clrNameBody" value="117;156;221;255;255;255"/>
+            <param key="clrNameBorder" value="255;255;255;0;0;0"/>			
+		</item>
+		<item name = "OrthoFerry">
+			<param key="clrBody" value="140;180;255;0;180;255"/>
+		</item>
+		<!--ferry end-->		
+
+		<!--Public Transportation-->	
+		<item name="Subway">
+			<param key="clrBody" value="200;200;200;60;60;60"/>
+			<param key="clrBorder" value="200;200;200;60;60;60"/>	
+		</item>
+		<item name="Tramway">
+			<param key="clrBody" value="180;180;180;50;50;50"/>
+			<param key="clrBorder" value="180;180;180;50;50;50"/>
+		</item>
+		<item name="Train">
+			<param key="clrBody" value="160;160;160;50;50;50"/>
+			<param key="clrBorder" value="245;245;245;180;180;180"/>
+		</item>
+		<item name="Traceway">
+			<param key="clrBody" value="160;160;160;150;150;150"/>
+			<param key="clrBorder" value="160;160;160;150;150;150"/>
+		</item>
+		<!--Public Transportation end-->		
+		
+		<!--Area Color-->
+		<item name="CityArea"> <!--Urban Color-->
+			<param key="clrBody" value="225;221;217;80;80;80"/>
+		</item>
+		<item name="NativeAmericanReservation">
+			<param key="clrBody" value="225;230;245;80;80;70"/>
+		</item>
+		<item name="Island">
+			<param key="clrBody" value="190;225;185;90;105;80"/>
+		</item>
+		<item name="ParkMonumentNational">
+			<param key="clrBody" value="225;230;245;80;80;70"/>
+		</item>
+		<item name="ParkState">
+			<param key="clrBody" value="225;230;245;80;80;70"/>
+		</item>
+		<item name="Woodland">
+			<param key="clrBody" value="225;230;245;80;80;70"/>
+		</item>
+		<item name="Elevation">
+			<param key="clrBody" value="225;230;245;80;80;70"/>
+		</item>
+		<item name="HurricaneProneArea">
+			<param key="clrBody" value="225;230;245;80;80;70"/>
+		</item>
+		<item name="TsunamiProneArea">
+			<param key="clrBody" value="225;230;245;80;80;70"/>
+		</item>
+		<item name="FloodProneArea">
+			<param key="clrBody" value="225;230;245;80;80;70"/>
+		</item>
+		<item name="BuildUpArea">
+			<param key="clrBody" value="240;228;228;90;90;100"/>
+		</item>
+		<item name="MilitaryBase">
+			<param key="clrBody" value="240;228;228;90;90;100"/>
+		</item>
+		<item name="Colonia">
+			<param key="clrBody" value="240;228;228;90;90;100"/>
+		</item>
+		<item name="CongestionZone">
+			<param key="clrBody" value="240;228;228;90;90;100"/>
+		</item>
+		<item name="ParkCityCounty">
+			<param key="clrBody" value="240;228;228;90;90;100"/>
+		</item>
+		<item name="AmusementPark">
+			<param key="clrBody" value="239;239;239;90;90;100"/>
+		</item>
+		<item name="AnimalPark">
+			<param key="clrBody" value="239;239;239;90;90;100"/>
+		</item>
+		<item name="Beach">
+			<param key="clrBody" value="239;239;239;90;90;100"/>
+		</item>
+		<item name="Railyard">
+			<param key="clrBody" value="239;239;239;90;90;100"/>
+		</item>		
+		<item name="Seaport">
+			<param key="clrBody" value="239;239;239;90;90;100"/>
+		</item>		
+		<item name="Airport">
+			<param key="clrBody" value="239;239;239;90;90;100"/>
+		</item>		
+		<item name="AircraftApron">
+			<param key="clrBody" value="170;170;190;80;80;90"/>
+		</item>	
+		<item name="RailRoad">
+			<param key="clrBody" value="230;218;218;90;90;100"/>
+		</item>		
+		<item name="UniversityCollege">
+			<param key="clrBody" value="230;230;230;90;90;75"/>
+		</item>
+		<item name="IndustrialComplex">
+			<param key="clrBody" value="235;235;220;85;85;75"/>
+		</item>
+		<item name="Hospital">
+			<param key="clrBody" value="238;238;238;100;80;80"/>
+		</item>
+		<item name="ShoppingCentre">
+			<param key="clrBody" value="230;225;240;90;90;75"/>
+		</item>
+		<item name="SportsComplex">
+			<param key="clrBody" value="225;235;240;90;90;75"/>
+		</item>
+		<item name="Cemetery">
+			<param key="clrBody" value="150;195;155;60;85;60"/>
+		</item>
+		<item name="GolfCourse">
+			<param key="clrBody" value="105;205;130;65;100;60"/>
+		</item>
+		<item name="ParkingLot">
+			<param key="clrBody" value="235;235;215;90;90;75"/>
+		</item>
+		<item name="ParkingGarage">
+			<param key="clrBody" value="235;235;215;90;90;75"/>
+		</item>
+		<item name="UnstructuredTrafficSquare">
+			<param key="clrBody" value="235;235;215;90;90;75"/>
+		</item>
+		<item name="PedestrianZone">
+			<param key="clrBody" value="235;235;215;90;90;75"/>
+		</item>
+		<item name="ParkInWater">
+			<param key="clrBody" value="235;235;215;90;90;75"/>
+		</item>
+		<item name="Building">
+			<param key="clrBody" value="210;210;210;120;120;120"/>
+		</item>
+		<item name="BuildingPoly">
+			<param key="clrBody" value="210;210;210;120;120;120"/>
+		</item>		
+		<item name="Ocean">
+			<param key="clrBody" value="231;231;231;57;77;100"/>
+		</item>
+		<item name="Harbour">
+			<param key="clrBody" value="235;235;215;62;62;48"/>
+		</item>
+		<item name="Rivers">
+			<param key="clrBody" value="231;231;231;62;62;48"/>
+		</item>
+		<item name="Lake">
+			<param key="clrBody" value="231;231;231;62;62;48"/>
+		</item>
+		<item name="Marsh">
+			<param key="clrBody" value="235;235;215;62;62;48"/>
+		</item>
+		<item name="Clacier">
+			<param key="clrBody" value="235;235;215;62;62;48"/>
+		</item>
+		
+		<!--osm polygon-->
+		<item name="LanduseFarm">
+			<param key="clrBody" value="231;231;231;163;193;145"/>
+		</item>
+		<item name="LanduseFarmland">
+			<param key="clrBody" value="231;231;231;176;198;167"/>
+		</item>
+		<item name="LanduseFarmyard">
+			<param key="clrBody" value="231;231;231;145;110;70"/>
+		</item>
+		<item name="LanduseGrass">
+			<param key="clrBody" value="231;231;231;65;90;60"/>
+		</item>
+		<item name="LanduseGreenfield">
+			<param key="clrBody" value="231;231;231;60;105;80"/>
+		</item>
+		<item name="LanduseMeadow">
+			<param key="clrBody" value="231;231;231;65;100;80"/>
+		</item>
+		<item name="LanduseForest">
+			<param key="clrBody" value="231;231;231;154;179;144"/>
+		</item>
+		<item name="NaturalGrassland">
+			<param key="clrBody" value="231;231;231;60;105;80"/>
+		</item>
+		<item name="NaturalScrub">
+			<param key="clrBody" value="231;231;231;65;90;50"/>
+		</item>
+		<item name="NaturalWood">
+			<param key="clrBody" value="231;231;231;129;152;119"/>
+		</item>
+		<item name="LanduseLake">
+			<param key="clrBody" value="231;231;231;50;100;145"/>
+		</item>
+		<item name="NaturalGlacier">
+			<param key="clrBody" value="231;231;231;240;250;255"/>
+		</item>
+		<item name="LanduseCemetery">
+			<param key="clrBody" value="231;231;231;60;85;60"/>
+		</item>
+		<item name="WaterwayDam">
+			<param key="clrBody" value="231;231;231;75;110;145"/>
+		</item>
+		<item name="LeisureTrack">
+			<param key="clrBody" value="200;200;200;120;45;35"/>
+		</item>
+		<item name="LeisureGarden">
+			<param key="clrBody" value="231;231;231;130;180;105"/>
+		</item>
+		<item name="LeisureGolf">
+			<param key="clrBody" value="231;231;231;97;192;128"/>
+		</item>
+		<item name="LeisurePark">
+			<param key="clrBody" value="231;231;231;175;230;150"/>
+		</item>
+		<item name="LeisurePitch">
+			<param key="clrBody" value="231;231;231;80;110;30"/>
+		</item>
+		<item name="LeisureSportstadium">
+			<param key="clrBody" value="231;231;231;35;75;40"/>
+		</item>
+		<item name="BoundaryNationalpark">
+			<param key="clrBody" value="231;231;231;70;90;65"/>
+		</item>
+		<item name="AerowayRunway">
+			<param key="clrBody" value="135;130;140;120;120;135"/>
+		</item>
+		<item name="AerowayAerodrome">
+			<param key="clrBody" value="239;239;239;90;90;100"/>
+		</item>
+		<item name="AerowayApron">
+			<param key="clrBody" value="170;170;190;80;80;90"/>
+		</item>		
+		<item name="AerowayTaxiway">
+			<param key="clrBody" value="185;185;205;120;120;135"/>
+		</item>
+		<item name="AirportRunwayroad">
+			<param key="clrBody" value="50;50;50;245;195;80"/>
+		</item>
+		<item name="SportHorseracing">
+			<param key="clrBody" value="210;180;155;130;105;80"/>
+		</item>
+		<item name="NaturalSand">
+			<param key="clrBody" value="240;225;195;175;145;105"/>
+		</item>	
+		<item name="AmenityParking">
+			<param key="clrBody" value="247;239;181;175;130;105"/>
+		</item>
+		<item name="HighwayPedestrian">
+			<param key="clrBody" value="222;223;239;140;145;130"/>
+		</item>
+		<item name="LanduseBrownfield">
+			<param key="clrBody" value="225;210;205;110;90;75"/>
+		</item>
+		<item name="RailwayPlatform">
+			<param key="clrBody" value="189;186;189;145;140;145"/>
+		</item>
+		<item name="OsmIsland">
+			<param key="clrBody" value="231;231;231;90;105;80"/>
+		</item>
+		<item name="CoastLine">
+			<param key="clrBody" value="0;128;128;30;90;90"/>
+		</item>
+		
+		<!--self draw polygon-->	
+		<item name="111"> <!--background-->
+			<param key="clrBody" value="247;247;245;75;105;70"/>
+		</item> 
+		<item name="112"> <!--USA light green-->
+			<param key="clrBody" value="247;247;245;90;105;75"/>
+		</item>
+		<item name="113"> <!--USA dark green-->
+			<param key="clrBody" value="247;247;245;105;110;80"/>
+		</item>
+		<item name="114"> <!--USA light yellow-->
+			<param key="clrBody" value="247;247;245;115;115;90"/>
+		</item>
+		<item name="115"> <!--USA dark yellow-->
+			<param key="clrBody" value="247;247;245;135;125;105"/>
+		</item>
+		<item name="116"> <!--Ocean blue-->
+			<param key="clrBody" value="247;247;245;60;90;100"/>
+		</item>
+		<item name="117"> <!--NA ice grey-->
+			<param key="clrBody" value="247;247;245;110;130;135"/>
+		</item>
+		<item name="120"> <!--USA yellow green-->
+			<param key="clrBody" value="247;247;245;130;130;125"/>
+		</item>
+		<item name="121"> <!--Greenland white-->
+			<param key="clrBody" value="247;247;245;130;130;125"/>
+		</item>
+		<item name="122"> <!--1.cdt light green-->
+			<param key="clrBody" value="247;247;245;130;130;125"/>
+		</item>
+		<item name="123"> <!--1.cdt dark green-->
+			<param key="clrBody" value="247;247;245;130;130;125"/>
+		</item>
+		<item name="124"> <!--1.cdt blue-->
+			<param key="clrBody" value="247;247;245;130;130;125"/>
+		</item>
+		<item name="125"> <!--1.cdt light green on top-->
+			<param key="clrBody" value="247;247;245;130;130;125"/>
+		</item>
+		<item name="126"> <!--1.cdt dark green on top-->
+			<param key="clrBody" value="247;247;245;130;130;125"/>
+		</item>
+		<item name="127"> <!--1.cdt blue on top-->
+			<param key="clrBody" value="231;231;231;130;130;125"/>
+		</item>
+		<item name="128"> 
+			<param key="clrBody" value="247;247;245;90;105;75"/>
+		</item>
+		<item name="129"> 
+			<param key="clrBody" value="243;242;238;243;242;238"/>
+		</item>
+		<item name="130"> 
+			<param key="clrBody" value="250;252;253;250;252;253"/>
+		</item>
+		<item name="131"> 
+			<param key="clrBody" value="231;231;231;163;204;255"/>
+		</item>
+		<item name="132"> 
+			<param key="clrBody" value="247;247;245;110;130;135"/>
+		</item>
+		<item name="133"> 
+			<param key="clrBody" value="222;221;217;222;221;217"/>
+		</item>
+		<item name="134"> 
+			<param key="clrBody" value="238;237;230;238;237;230"/>
+		</item>
+		
+		<!--Indoor map polygon-->
+		<item name="OuterFace">
+			<param key="clrBody" value="255;230;220;140;140;140 "/>
+			<param key="clrBorder" value="255;200;200;140;110;110"/>
+			<param key="borderWidth" value ="4"/>
+		</item>
+		<item name="InnerFace1">
+			<param key="clrBody" value="255;230;220;140;125;120"/>
+			<param key="clrBorder" value="255;200;200;140;110;110"/>
+			<param key="borderWidth" value ="2"/>
+		</item>
+		<item name="InnerFace2">
+			<param key="clrBody" value="245;225;255;127;133;141"/>
+			<param key="clrBorder" value=" 235;210;255;114;127;141"/>
+			<param key="borderWidth" value ="2"/>
+		</item>
+		<item name="InnerFace3">
+			<param key="clrBody" value="225;230;245;137;132;141"/>
+			<param key="clrBorder" value="210;220;245;128;113;141"/>
+			<param key="borderWidth" value ="2"/>
+		</item>
+		<item name="InnerFace4">
+			<param key="clrBody" value="230;240;255;124;127;135"/>
+			<param key="clrBorder" value="210;230;255;114;119;135"/>
+			<param key="borderWidth" value ="2"/>
+		</item>
+		<item name="InnerFace5">
+			<param key="clrBody" value="230;230;230;127;127;127"/>
+			<param key="clrBorder" value="210;210;210;114;114;114"/>
+			<param key="borderWidth" value ="2"/>
+		</item>
+		<item name="InnerFace6">
+			<param key="clrBody" value="220;220;180;130;130;110"/>
+			<param key="clrBorder" value="190;190;150;115;115;90"/>
+			<param key="borderWidth" value ="2"/>
+		</item>
+		<item name="InnerFace7">
+			<param key="clrBody" value="220;240;220;130;145;130"/>
+			<param key="clrBorder" value="190;210;210;115;125;125"/>
+			<param key="borderWidth" value ="2"/>
+		</item>
+		<item name="InnerFace8">
+			<param key="clrBody" value="255;220;180;155;130;110 "/>
+			<param key="clrBorder" value="230;190;150;140;115;90"/>
+			<param key="borderWidth" value ="2"/>
+		</item>
+		<item name="InnerFace9">
+			<param key="clrBody" value="190;220;220;115;130;130"/>
+			<param key="clrBorder" value="160;200;200;100;120;120"/>
+			<param key="borderWidth" value ="2"/>
+		</item>
+		
+		<!--Area Color end-->
+
+		<!--Administration Area Border-->
+		<item name="LandBorder">
+			<param key="clrBody" value="220;220;220;220;220;220"/>
+			<param key="width" value="1"/>
+		</item>
+		<item name="CountryBorder">
+			<param key="clrBody" value="150;150;150;150;150;150"/>
+			<param key="width" value="4"/>
+			<!--<param key="clrBody" value="55;155;215;55;155;215"/>-->
+		</item>
+		<item name="ProvinceBorder">
+			<param key="clrBody" value="165;165;165;165;165;165"/>
+			<param key="width" value="3"/>
+		</item>
+			<item name="LandBorderCn">
+			<param key="clrBody" value="253;157;72;253;157;72"/>
+			<param key="width" value="1"/>
+		</item>
+		<item name="CountryBorderCn">
+			<param key="clrBody" value="150;150;150;150;150;150"/>
+			<param key="width" value="1"/>
+		</item>
+		<item name="ProvinceBorderCn">
+			<param key="clrBody" value="165;165;165;165;165;165"/>
+			<param key="width" value="3"/>
+		</item>
+		<!--Administration Area Border end-->
+
+		<!--Administration Area and City Name-->
+		<item name="Country">
+			<param key="size" value="12"/>
+			<param key="clrBody" value="50;50;50;255;255;255"/>
+			<param key="clrBorder" value="255;255;255;0;0;0"/>
+			<param key="clrOrthoBody" value="50;50;50;255;255;255"/>
+			<param key="clrOrthoBorder" value="255;255;255;0;0;0"/>
+			<param key="bBold" value="Y"/>
+		</item>
+		<item name="Department">
+			<param key="size" value="12"/>
+			<param key="clrBody" value="135;135;135;200;210;255"/>
+			<param key="clrBorder" value="255;255;255;0;0;0"/>
+			<param key="clrOrthoBody" value="135;135;135;230;230;230"/>
+			<param key="clrOrthoBorder" value="255;255;255;0;0;0"/>
+			<param key="bBold" value="N"/>
+		</item>
+		<item name="Province">
+			<param key="size" value="16"/>
+			<param key="clrBody" value="85;75;55;200;255;210"/>
+			<param key="clrBorder" value="255;255;255;0;0;0"/>
+			<param key="clrOrthoBody" value="70;70;70;230;230;230"/>
+			<param key="clrOrthoBorder" value="255;255;255;0;0;0"/>
+			<param key="bBold" value="Y"/>
+		</item>
+		<item name="Capital">
+			<param key="size" value="16"/>
+			<param key="clrBody" value="40;40;40;190;200;245"/>
+			<param key="clrBorder" value="255;255;255;0;0;0"/>
+			<param key="clrOrthoBody" value="60;60;60;240;240;240"/>
+			<param key="clrOrthoBorder" value="255;255;255;0;0;0"/>
+			<param key="bBold" value="N"/>
+		</item>
+		<item name="City">
+			<param key="size" value="16"/>
+			<param key="clrBody" value="40;40;30;240;220;220"/>
+			<param key="clrBorder" value="255;255;255;0;0;0"/>
+			<param key="clrOrthoBody" value="70;70;70;230;230;230"/>
+			<param key="clrOrthoBorder" value="255;255;255;0;0;0"/>
+			<param key="bBold" value="N"/>
+		</item>
+		<item name="Settelment">
+		  <param key="size" value="11"/>
+		  <param key="clrBody" value="145;130;95;130;180;255"/>
+			<param key="clrBorder" value="255;255;255;0;0;0"/>
+			<param key="clrOrthoBody" value="240;220;220;240;220;220"/>
+			<param key="clrOrthoBorder" value="0;0;0;0;0;0"/>
+			<param key="bBold" value="Y"/>
+		</item>
+		<item name="SubwayStation">
+			<param key="size" value="11"/>
+			<param key="clrBody" value="50;80;100;175;195;205"/>
+			<param key="clrBorder" value="255;255;255;0;0;0"/>
+			<param key="clrOrthoBody" value="245;245;245;245;245;245"/>
+			<param key="clrOrthoBorder" value="0;0;0;0;0;0"/>
+			<param key="bBold" value="Y"/>
+		</item>
+		<!--Administration Area and City Name end-->
+		<!--Different name rendering on map begin-->
+		<item name="OceanName">
+			<param key="size" value="13"/>
+			<param key="clrBody" value="231;231;231;80;130;200"/>
+			<param key="clrBorder" value="130;165;200;130;165;200"/>
+			<param key="clrOrthoBody" value="231;231;231;80;130;200"/>
+			<param key="clrOrthoBorder" value="130;165;200;130;165;200"/>
+			<param key="bBold" value="N"/>
+		</item>
+		<item name="SeaName">
+			<param key="size" value="11"/>
+			<param key="clrBody" value="231;231;231;80;130;200"/>
+			<param key="clrBorder" value="130;165;200;130;165;200"/>
+			<param key="clrOrthoBody" value="231;231;231;80;130;200"/>
+			<param key="clrOrthoBorder" value="130;165;200;130;165;200"/>
+			<param key="bBold" value="N"/>
+		</item>
+		<item name="NationalPark">
+			<param key="size" value="13"/>
+			<param key="clrBody" value="231;231;231;54;131;46"/>
+			<param key="clrBorder" value="255;255;255;255;255;255"/>
+			<param key="clrOrthoBody" value="231;231;231;54;131;46"/>
+			<param key="clrOrthoBorder" value="255;255;255;255;255;255"/>
+			<param key="bBold" value="Y"/>
+		</item>	
+		<item name="NationalLake">
+			<param key="size" value="13"/>
+			<param key="clrBody" value="65;120;220;65;120;220"/>
+			<param key="clrBorder" value="255;255;255;255;255;255"/>
+			<param key="clrOrthoBody" value="65;120;220;65;120;220"/>
+			<param key="clrOrthoBorder" value="255;255;255;255;255;255"/>
+			<param key="bBold" value="Y"/>
+		</item>		
+		<item name="NationalMountain">
+			<param key="size" value="13"/>
+			<param key="clrBody" value="231;231;231;70;125;65"/>
+			<param key="clrBorder" value="255;255;255;255;255;255"/>
+			<param key="clrOrthoBody" value="231;231;231;70;125;65"/>
+			<param key="clrOrthoBorder" value="255;255;255;255;255;255"/>
+			<param key="bBold" value="Y"/>
+		</item>
+		<!--Different name rendering on map end-->
+		
+			<!--poi name start-->
+	<item name="3001">   <!--visit-->
+		<param key="clrNameBody" value="109;109;109;70;125;65"/>
+		<param key="clrNameBorder" value="255;255;255;255;255;255"/>
+		<param key="fontSize" value="11"/>
+	</item>
+	<item name="3002"> <!--sleep-->
+		<param key="clrNameBody" value="109;109;109;120;75;165"/>
+		<param key="clrNameBorder" value="255;255;255;255;255;255"/>
+		<param key="fontSize" value="11"/>
+	</item>
+	<item name="3003"> <!--eat-->
+		<param key="clrNameBody" value="109;109;109;200;130;50"/>
+		<param key="clrNameBorder" value="255;255;255;255;255;255"/>
+		<param key="fontSize" value="11"/>
+	</item>	
+	<item name="3004"> <!--play-->
+		<param key="clrNameBody" value="109;109;109;190;70;70"/>
+		<param key="clrNameBorder" value="255;255;255;255;255;255"/>
+		<param key="fontSize" value="11"/>
+	</item>	
+	<item name="3005"> <!--shop-->
+		<param key="clrNameBody" value="109;109;109;195;90;130"/>
+		<param key="clrNameBorder" value="255;255;255;255;255;255"/>
+		<param key="fontSize" value="11"/>
+	</item>	
+	<item name="3006"> <!--Travel-->
+		<param key="clrNameBody" value="109;109;109;65;120;220"/>
+		<param key="clrNameBorder" value="255;255;255;255;255;255"/>
+		<param key="fontSize" value="11"/> 
+	</item>	
+	<item name="3007"> <!--Service-->
+		<param key="clrNameBody" value="109;109;109;175;140;0"/>
+		<param key="clrNameBorder" value="255;255;255;255;255;255"/>
+		<param key="fontSize" value="11"/>
+	</item>	
+	<item name="110">
+		<param key="clrNameBody" value="109;109;109;190;70;70"/>
+		<param key="clrNameBorder" value="255;255;255;255;255;255"/>
+		<param key="fontSize" value="11"/>
+	</item>	
+	<item name="184">
+		<param key="clrNameBody" value="109;109;109;105;121;134"/>
+		<param key="clrNameBorder" value="255;255;255;255;255;255"/>
+		<param key="fontSize" value="11"/>
+	</item>
+		<item name="176">
+		<param key="clrNameBody" value="109;109;109;105;121;134"/>
+		<param key="clrNameBorder" value="255;255;255;255;255;255"/>
+		<param key="fontSize" value="11"/>
+	</item>		
+	<item name="175">
+		<param key="clrNameBody" value="109;109;109;105;121;134"/>
+		<param key="clrNameBorder" value="255;255;255;255;255;255"/>
+		<param key="fontSize" value="11"/>
+	</item>
+	<item name="144">
+		<param key="clrNameBody" value="109;109;109;105;121;134"/>
+		<param key="clrNameBorder" value="255;255;255;255;255;255"/>
+		<param key="fontSize" value="11"/>		
+	</item>	
+		<item name="142">
+		<param key="clrNameBody" value="109;109;109;105;121;134"/>
+		<param key="clrNameBorder" value="255;255;255;255;255;255"/>
+		<param key="fontSize" value="11"/>		
+	</item>	
+<!--poi name end-->
+		</ItemGroup>
+		
+    <PathColorWithUI>
+           <color name="black">
+                    <clrPath>0;0;0;0;0;0</clrPath>
+                    <clrPathBorder>161;161;161;161;161;161</clrPathBorder>
+                    <clrOldPath>162;162;162;162;162;162</clrOldPath>
+                    <clrOldPathBorder>228;228;228;228;228;228</clrOldPathBorder>
+                    <clrGuidanceArrow>255;255;0;255;255;0</clrGuidanceArrow>
+                    <clrGuidanceArrowBorder>255;0;0;255;0;0</clrGuidanceArrowBorder>
+                    <clrOldDirectionArrow>0;0;0;0;0;0</clrOldDirectionArrow>
+                    <clrNewDirectionArrow>162;162;162;162;162;162</clrNewDirectionArrow>
+                    <clrManeuverArrow>0;0;0;0;0;0</clrManeuverArrow>
+                    <clrTagText>255;255;255;255;255;255</clrTagText>
+                    <clrTagTextBorder>0;0;0;71;71;71</clrTagTextBorder>
+                    <sizeTagFont>12</sizeTagFont>
+                    <clrTagFill>0;0;0;0;0;0</clrTagFill>
+                    <clrTagBorder>161;161;161;161;161;161</clrTagBorder>
+           </color>
+           <color name="blue">
+                    <clrPath>0;186;255;0;186;255</clrPath>
+                    <clrPathBorder>0;30;255;0;30;255</clrPathBorder>
+                    <clrOldPath>180;229;255;180;229;255</clrOldPath>
+                    <clrOldPathBorder>108;170;255;108;170;255</clrOldPathBorder>
+                    <clrGuidanceArrow>255;255;0;255;255;0</clrGuidanceArrow>
+                    <clrGuidanceArrowBorder>255;0;0;255;0;0</clrGuidanceArrowBorder>
+                    <clrOldDirectionArrow>108;170;255;108;170;255</clrOldDirectionArrow>
+                    <clrNewDirectionArrow>0;30;255;0;30;255</clrNewDirectionArrow>
+                    <clrManeuverArrow>0;150;255;0;150;255</clrManeuverArrow>
+                    <clrTagText>255;255;255;255;255;255</clrTagText>
+                    <clrTagTextBorder>0;0;0;0;0;0</clrTagTextBorder>
+                    <sizeTagFont>12</sizeTagFont>
+                    <clrTagFill>0;186;255;0;186;255</clrTagFill>
+                    <clrTagBorder>0;30;255;0;30;255</clrTagBorder>
+           </color>
+           <color name="brown">
+                    <clrPath>251;232;107;251;232;107</clrPath>
+                    <clrPathBorder>147;67;32;147;67;32</clrPathBorder>
+                    <clrOldPath>252;240;162;252;240;162</clrOldPath>
+                    <clrOldPathBorder>203;155;87;203;155;87</clrOldPathBorder>
+                    <clrGuidanceArrow>255;255;0;255;255;0</clrGuidanceArrow>
+                    <clrGuidanceArrowBorder>255;0;0;255;0;0</clrGuidanceArrowBorder>
+                    <clrOldDirectionArrow>151;81;50;151;81;50</clrOldDirectionArrow>
+                    <clrNewDirectionArrow>147;67;32;147;67;32</clrNewDirectionArrow>
+                    <clrManeuverArrow>147;67;32;147;67;32</clrManeuverArrow>
+                    <clrTagText>37;37;37;37;37;37</clrTagText>
+                    <clrTagTextBorder>255;255;255;255;255;255</clrTagTextBorder>
+                    <sizeTagFont>12</sizeTagFont>
+                    <clrTagFill>251;232;107;251;232;107</clrTagFill>
+                    <clrTagBorder>147;67;32;147;67;32</clrTagBorder>
+           </color>
+           <color name="green">
+                    <clrPath>168;255;0;168;255;0</clrPath>
+                    <clrPathBorder>1;206;54;1;206;54</clrPathBorder>
+                    <clrOldPath>169;195;119;169;195;119</clrOldPath>
+                    <clrOldPathBorder>125;169;137;125;169;137</clrOldPathBorder>
+                    <clrGuidanceArrow>255;255;0;255;255;0</clrGuidanceArrow>
+                    <clrGuidanceArrowBorder>255;0;0;255;0;0</clrGuidanceArrowBorder>
+                    <clrOldDirectionArrow>36;232;10;36;232;10</clrOldDirectionArrow>
+                    <clrNewDirectionArrow>1;206;54;1;206;54</clrNewDirectionArrow>
+                    <clrManeuverArrow>147;231;0;147;231;0</clrManeuverArrow>
+                    <clrTagText>37;37;37;37;37;37</clrTagText>
+                    <clrTagTextBorder>255;255;255;255;255;255</clrTagTextBorder>
+                    <sizeTagFont>12</sizeTagFont>
+                    <clrTagFill>168;255;0;168;255;0</clrTagFill>
+                    <clrTagBorder>1;206;54;1;206;54</clrTagBorder>
+           </color>
+           <color name="orange">
+                    <clrPath>255;126;0;255;126;0</clrPath>
+                    <clrPathBorder>197;42;0;197;42;0</clrPathBorder>
+                    <clrOldPath>255;193;148;255;193;148</clrOldPath>
+                    <clrOldPathBorder>232;149;88;232;149;88</clrOldPathBorder>
+                    <clrGuidanceArrow>255;255;0;255;255;0</clrGuidanceArrow>
+                    <clrGuidanceArrowBorder>255;0;0;255;0;0</clrGuidanceArrowBorder>
+                    <clrOldDirectionArrow>255;126;0;255;126;0</clrOldDirectionArrow>
+                    <clrNewDirectionArrow>255;255;0;255;255;0</clrNewDirectionArrow>
+                    <clrManeuverArrow>255;255;19;255;255;19</clrManeuverArrow>
+                    <clrTagText>255;255;255;255;255;255</clrTagText>
+                    <clrTagTextBorder>0;0;0;0;0;0</clrTagTextBorder>
+                    <sizeTagFont>12</sizeTagFont>
+                    <clrTagFill>255;126;0;255;126;0</clrTagFill>
+                    <clrTagBorder>197;42;0;197;42;0</clrTagBorder>
+           </color>
+           <color name="pink">
+                    <clrPath>255;151;203;255;151;203</clrPath>
+                    <clrPathBorder>255;0;114;255;0;114</clrPathBorder>
+                    <clrOldPath>253;207;233;253;207;233</clrOldPath>
+                    <clrOldPathBorder>232;165;195;232;165;195</clrOldPathBorder>
+                    <clrGuidanceArrow>255;255;0;255;255;0</clrGuidanceArrow>
+                    <clrGuidanceArrowBorder>240;0;0;240;0;0</clrGuidanceArrowBorder>
+                    <clrOldDirectionArrow>255;151;203;255;151;203</clrOldDirectionArrow>
+                    <clrNewDirectionArrow>255;0;114;255;0;114</clrNewDirectionArrow>
+                    <clrManeuverArrow>255;151;203;255;151;203</clrManeuverArrow>
+                    <clrTagText>255;255;255;255;255;255</clrTagText>
+                    <clrTagTextBorder>0;0;0;0;0;0</clrTagTextBorder>
+                    <sizeTagFont>12</sizeTagFont>
+                    <clrTagFill>255;151;203;255;151;203</clrTagFill>
+                    <clrTagBorder>255;0;114;255;0;114</clrTagBorder>
+           </color>
+					 <color name="purple">
+                    <clrPath>255;90;255;255;90;255</clrPath>
+                    <clrPathBorder>188;0;159;188;0;159</clrPathBorder>
+                    <clrOldPath>254;162;255;254;162;255</clrOldPath>
+                    <clrOldPathBorder>237;135;229;237;135;229</clrOldPathBorder>
+                    <clrGuidanceArrow>255;255;0;255;255;0</clrGuidanceArrow>
+                    <clrGuidanceArrowBorder>255;0;0;255;0;0</clrGuidanceArrowBorder>
+                    <clrOldDirectionArrow>255;0;246;255;0;246</clrOldDirectionArrow>
+                    <clrNewDirectionArrow>188;0;177;188;0;177</clrNewDirectionArrow>
+                    <clrManeuverArrow>255;0;246;255;0;246</clrManeuverArrow>
+                    <clrTagText>255;255;255;255;255;255</clrTagText>
+                    <clrTagTextBorder>0;0;0;0;0;0</clrTagTextBorder>
+                    <sizeTagFont>12</sizeTagFont>
+                    <clrTagFill>255;90;255;255;90;255</clrTagFill>
+                    <clrTagBorder>255;0;114;255;0;114</clrTagBorder>
+           </color>
+           <color name="red">
+                    <clrPath>255;24;24;255;24;24</clrPath>
+                    <clrPathBorder>168;0;0;168;0;0</clrPathBorder>
+                    <clrOldPath>255;162;162;255;162;162</clrOldPath>
+                    <clrOldPathBorder>214;95;95;214;95;95</clrOldPathBorder>
+                    <clrGuidanceArrow>255;255;0;255;255;0</clrGuidanceArrow>
+                    <clrGuidanceArrowBorder>240;0;0;240;0;0</clrGuidanceArrowBorder>
+                    <clrOldDirectionArrow>255;24;24;255;24;24</clrOldDirectionArrow>
+                    <clrNewDirectionArrow>255;162;162;255;162;162</clrNewDirectionArrow>
+                    <clrManeuverArrow>255;24;24;255;24;24</clrManeuverArrow>
+                    <clrTagText>255;255;255;255;255;255</clrTagText>
+                    <clrTagTextBorder>0;0;0;0;0;0</clrTagTextBorder>
+                    <sizeTagFont>12</sizeTagFont>
+                    <clrTagFill>255;24;24;255;24;24</clrTagFill>
+                    <clrTagBorder>168;0;0;168;0;0</clrTagBorder>
+           </color>
+           <color name="navyblue">
+                    <clrPath>0;6;255;0;6;255</clrPath>
+                    <clrPathBorder>88;218;255;88;218;255</clrPathBorder>
+                    <clrOldPath>120;125;140;120;125;140</clrOldPath>
+                    <clrOldPathBorder>88;218;255;88;218;255</clrOldPathBorder>
+                    <clrGuidanceArrow>255;235;0;255;235;0</clrGuidanceArrow>
+                    <clrGuidanceArrowBorder>50;50;50;50;50;50</clrGuidanceArrowBorder>
+                    <clrOldDirectionArrow>55;80;125;55;80;125</clrOldDirectionArrow>
+                    <clrNewDirectionArrow>90;155;255;90;155;255</clrNewDirectionArrow>
+                    <clrManeuverArrow>255;255;0;255;255;0</clrManeuverArrow>
+                    <clrTagText>255;255;255;255;255;255</clrTagText>
+                    <clrTagTextBorder>43;58;86;43;58;86</clrTagTextBorder>
+                    <sizeTagFont>12</sizeTagFont>
+                    <clrTagFill>0;6;255;0;6;255</clrTagFill>
+                    <clrTagBorder>88;218;255;88;218;255</clrTagBorder>
+           </color>
+           <color name="white">
+                    <clrPath>255;255;255;255;255;255</clrPath>
+                    <clrPathBorder>144;144;144;144;144;144</clrPathBorder>
+                    <clrOldPath>228;228;228;228;228;228</clrOldPath>
+                    <clrOldPathBorder>195;195;195;195;195;195</clrOldPathBorder>
+                    <clrGuidanceArrow>255;255;0;255;255;0</clrGuidanceArrow>
+                    <clrGuidanceArrowBorder>255;0;0;255;0;0</clrGuidanceArrowBorder>
+                    <clrOldDirectionArrow>193;193;193;193;193;193</clrOldDirectionArrow>
+                    <clrNewDirectionArrow>144;144;144;144;144;144</clrNewDirectionArrow>
+                    <clrManeuverArrow>193;193;193;193;193;193</clrManeuverArrow>
+                    <clrTagText>55;55;55;0;0;0</clrTagText>
+                    <clrTagTextBorder>232;240;255;255;255;255</clrTagTextBorder>
+                    <sizeTagFont>12</sizeTagFont>
+                    <clrTagFill>255;255;255;255;255;255</clrTagFill>
+                    <clrTagBorder>144;144;144;144;144;144</clrTagBorder>
+           </color>
+           <color name="whitegrey">
+                    <clrPath>182;182;182;182;182;182</clrPath>
+                    <clrPathBorder>99;99;99;99;99;99</clrPathBorder>
+                    <clrOldPath>199;199;199;199;199;199</clrOldPath>
+                    <clrOldPathBorder>179;173;173;179;173;173</clrOldPathBorder>
+                    <clrGuidanceArrow>255;220;0;255;220;0</clrGuidanceArrow>
+                    <clrGuidanceArrowBorder>255;0;0;255;0;0</clrGuidanceArrowBorder>
+                    <clrOldDirectionArrow>126;126;126;126;126;126</clrOldDirectionArrow>
+                    <clrNewDirectionArrow>99;99;99;99;99;99</clrNewDirectionArrow>
+                    <clrManeuverArrow>99;99;99;99;99;99</clrManeuverArrow>
+                    <clrTagText>255;255;255;0;0;0</clrTagText>
+                    <clrTagTextBorder>0;0;0;255;255;255</clrTagTextBorder>
+                    <sizeTagFont>12</sizeTagFont>
+                    <clrTagFill>182;182;182;182;182;182</clrTagFill>
+                    <clrTagBorder>99;99;99;99;99;99</clrTagBorder>
+           </color>
+           <color name="yellow">
+                    <clrPath>255;255;0;255;255;0</clrPath>
+                    <clrPathBorder>255;84;0;255;84;0</clrPathBorder>
+                    <clrOldPath>255;251;128;255;251;128</clrOldPath>
+                    <clrOldPathBorder>255;181;122;255;181;122</clrOldPathBorder>
+                    <clrGuidanceArrow>255;156;0;255;156;0</clrGuidanceArrow>
+                    <clrGuidanceArrowBorder>255;0;0;255;0;0</clrGuidanceArrowBorder>
+                    <clrOldDirectionArrow>255;255;0;255;255;0</clrOldDirectionArrow>
+                    <clrNewDirectionArrow>255;84;0;255;84;0</clrNewDirectionArrow>
+                    <clrManeuverArrow>255;255;0;255;255;0</clrManeuverArrow>
+                    <clrTagText>45;45;45;37;37;37</clrTagText>
+                    <clrTagTextBorder>232;240;255;255;255;255</clrTagTextBorder>
+                    <sizeTagFont>12</sizeTagFont>
+                    <clrTagFill>255;255;0;255;255;0</clrTagFill>
+                    <clrTagBorder>255;84;0;255;84;0</clrTagBorder>
+           </color>
+           <color name="conflict" to="whitegrey">
+										<clrTagText>255;255;255;255;255;255</clrTagText>
+                    <clrTagTextBorder>0;0;0;0;0;0</clrTagTextBorder>
+                    <sizeTagFont>12</sizeTagFont>
+                    <clrTagFill>57;132;203;57;132;203</clrTagFill>
+                    <clrTagBorder>54;54;54;54;54;54</clrTagBorder>
+           </color>
+		</PathColorWithUI>
+		<PathDirection>
+        <param key="clrBody" value="255;126;0;197;42;0"/>
+        <param key="clrBorder" value="197;42;0;255;126;0"/>
+        <param key="width" value="2"/>
+        <param key="borderWidth" value ="3"/>
+        <param key="minWidth" value="2"/>
+        <param key="fontSize" value="12"/>
+        <param key="clrNameBody" value="255;204;0;255;204;0"/>
+        <param key="clrNameBorder" value="0;0;0;0;0;0"/>
+       </PathDirection>
+
+
+	<GlobalGroup>
+		<!--Map background color-->
+		<!-- <param key="clrBg" value="230;235;220;80;80;95"/> -->
+		<param key="clrBg" value="240;240;240;80;80;95"/>
+		<param key="clrSpeBg" value="236;233;230;80;80;95"/>
+		<param key="clrSpeBg1" value="236;233;230;80;80;95"/>
+		<param key="clrBgNavi3D" value="234;250;220;70;90;65"/>
+		<param key="clrMask" value="255;255;255;70;70;70"/>
+		<param key="Sky" value="Day"/>
+		<param key="Building" value="Day"/>
+		
+                <!--Map font-->
+		<param key="globalFont" value="tahoma"/>
+
+		<!--Gudiance Arrow Parameter-->
+		<param key="clrGuidanceArrow" value="255;255;0;255;255;0"/>
+		<param key="clrGuidanceArrowBorder" value="209;52;87;209;52;87"/>
+		<param key="guidanceArrowHight" value="6"/>
+		<param key="guidanceArrowBorderWidth" value="6"/>
+		<param key="guidanceArrowWidth" value="28"/>
+		<param key="clrOldDirectionArrow" value="0;6;255;0;6;255;"/>
+		<param key="clrNewDirectionArrow" value="88;218;255;88;218;255"/>
+		<param key="clrManeuverArrow" value="0;6;255;128;0;127"/>
+		
+		 <param key="clrGuidanceArrowFree" value="255;255;0;255;255;0"/>
+     <param key="clrGuidanceArrowBorderFree" value="209;52;87;209;52;87"/>
+     <param key="clrOldDirectionArrowFree" value="102;204;102;102;204;102"/>
+     <param key="clrNewDirectionArrowFree" value="0;204;0;0;204;0"/>
+     <param key="clrManeuverArrowFree" value="0;6;255;128;0;127"/>
+     
+     <param key="clrGuidanceArrowSluggish" value="255;255;0;255;255;0"/>
+     <param key="clrGuidanceArrowBorderSluggish" value="251;188;12;251;188;12"/>
+     <param key="clrOldDirectionArrowSluggish" value="255;150;90;255;150;90"/>
+     <param key="clrNewDirectionArrowSluggish" value="255;255;0;255;255;0"/>
+     <param key="clrManeuverArrowSluggish" value="0;6;255;128;0;127"/>
+     
+     <param key="clrGuidanceArrowSlow" value="255;255;0;255;255;0"/>
+     <param key="clrGuidanceArrowBorderSlow" value="209;52;87;209;52;87"/>
+     <param key="clrOldDirectionArrowSlow" value="255;24;24;255;24;24"/>
+     <param key="clrNewDirectionArrowSlow" value="255;162;162;255;162;162"/>
+     <param key="clrManeuverArrowSlow" value="0;6;255;128;0;127"/>
+     
+     <param key="clrGuidanceArrowClose" value="255;255;0;255;255;0"/>
+     <param key="clrGuidanceArrowBorderClose" value="209;52;87;209;52;87"/>
+     <param key="clrOldDirectionArrowClose" value="200;200;200;200;200;200"/>
+     <param key="clrNewDirectionArrowClose" value="162;162;162;162;162;162"/>
+     <param key="clrManeuverArrowClose" value="0;6;255;128;0;127"/>
+
+		<!--Gudiance Path Parameter-->
+		<param key="clrPath" value="0;6;255;0;6;255"/>
+		<param key="clrPathBorder" value="88;218;255;88;218;255"/>
+		
+		<param key="clrPathFree" value="168;255;0;168;255;0"/>			
+		<param key="clrPathBorderFree" value="1;206;54;1;206;54"/>
+		<param key="clrOldPathFree" value="204;204;102;204;204;102"/>	
+		<param key="clrOldPathBorderFree" value="125;169;0;125;169;0"/>
+		
+		<param key="clrPathSluggish" value="255;150;90;255;150;90"/>		
+		<param key="clrPathBorderSluggish" value="230;140;40;230;140;40"/>
+		<param key="clrOldPathSluggish" value="255;190;155;255;190;155"/>
+		<param key="clrOldPathBorderSluggish" value="255;186;111;255;186;111"/>
+		
+		<param key="clrPathSlow" value="255;24;24;255;24;24"/>
+		<param key="clrPathBorderSlow" value="168;0;0;168;0;0"/>
+		<param key="clrOldPathSlow" value="255;162;162;255;162;162"/>		
+		<param key="clrOldPathBorderSlow" value="214;95;95;214;95;95"/>
+		
+		<param key="clrPathClose" value="0;0;0;0;0;0"/>
+		<param key="clrPathBorderClose" value="161;161;161;161;161;161"/>
+		<param key="clrOldPathClose" value="162;162;162;162;162;162"/>		
+		<param key="clrOldPathBorderClose" value="228;228;228;228;228;228"/>	
+		
+		<param key="clrBusPath" value="55;229;3;55;229;3"/>
+		<param key="clrBusPathBorder" value="0;150;0;0;150;0"/>
+		
+		<param key="clrSubwayPath" value="38;232;253;38;232;253"/>
+		<param key="clrSubwayPathBorder" value="0;166;255;0;166;255"/>	
+		
+		<param key="clrTrainPath" value="255;100;0;255;100;0"/>
+		<param key="clrTrainPathBorder" value="195;75;0;195;75;0"/>		
+	
+		<param key="clrOldPath" value="155;170;220;155;170;220"/>
+		<param key="clrOldPathBorder" value="88;218;255;88;218;255"/>
+		<param key="pathWidth" value="40"/>
+		<param key="pathBorderWidth" value ="6"/>
+		<param key="minPathWidth" value="8"/>
+		
+		<!--3D Building Effect-->
+		<param key="clr3DBuilding" value="160;160;160;70;70;70"/>		
+		<param key="clr3DbuildingWall2" value="180;180;180;100;100;100"/>
+		<param key="clr3DbuildingCeilling1" value="210;210;210;110;110;110"/>
+		<param key="clr3DbuildingCeilling2" value="190;190;190;110;110;110"/>
+		<param key="clrBuildingShadow" value="130;130;130;139;139;139"/>			
+		
+		<!--Gps Track Parameter-->
+		<param key="clrGpsTrackBody" value="0;0;255;0;0;255"/>
+		<param key="clrGpsTrackBorder" value="0;255;255;0;255;255"/>
+		<param key="clrGpsTrackLine" value="0;255;0;0;255;0"/>
+
+		<!--Compass Parameter-->
+		<param key="clrCmpNorthNoGps" value="131;7;1;93;34;23"/>
+		<param key="clrCmpNorthLightNoGps" value="255;18;0;255;48;0"/>		
+		<param key="clrCmpNorth" value="7;131;1;34;93;23"/>
+		<param key="clrCmpSouth" value="165;167;167;165;167;167"/>
+		<param key="clrCmpSouthLight" value="232;232;232;232;232;232"/>
+		<param key="clrCmpNorthLight" value="18;255;0;48;255;0"/>
+		<param key="clrCmpNorthBorder" value="200;200;200;200;200;200"/>
+		<param key="clrCmpSouthBorder" value="200;200;200;200;200;200"/>
+
+
+		<!--Scale Ruler Parameter-->
+		<param key="clrScale" value="0;0;0;0;0;0"/>
+		<param key="clrScaleText" value="0;0;0;0;0;0"/>
+		<param key="clrScaleBorder" value="255;255;255;255;255;255"/>
+		
+		<!--Lat & Lon Parameter-->
+		<param key="latLonFontSize" value="16"/>
+		<param key="clrLatLon" value="40;0;180;0;240;240"/>
+		<param key="clrLatLonBorder" value="200;200;255;0;90;180"/>
+
+		<!--POI List Parameter-->
+		<param key="poiListFontSize" value="15"/>
+		<param key="clrPoiListText" value="0;0;0;0;0;0"/>
+		<param key="clrPoiListBG" value="255;255;255;255;255;255"/>
+		<param key="clrPoiListFrame" value="0;0;0;0;0;0"/>
+		
+		<!--POI Icon size Parameter-->
+		<param key="poiHighLevelBasSize" value="15"/>
+		<param key="poiHighLevelSize" value="10"/>
+		<param key="poiLowLevelBasSize" value="20"/>
+		<param key="poiLowLevelSize" value="14"/>
+		
+		<!--Pub tag parameter-->
+    <param key="pubTagFontSize" value="18"/>
+    <param key="clrPubTagTextBody" value="255;255;255;0;0;0"/>
+    <param key="clrPubTagTextEdge" value="0;0;0;255;255;255"/>
+    <param key="clrPubTagBG" value="70;105;236;255;255;255"/>
+    <param key="clrPubTagFrame" value="46;46;46;48;48;48"/>
+
+		<!--Junction View Styel. 0-Europe, 1-Middle East & Africa-->
+		<param key="junctionViewStyel" value="0"/> 
+		<param key="clrJVArrow" value="255;128;0;255;128;0"/>
+		<param key="clrJVArrowBorder" value="150;150;150;150;150;150"/>
+		<param key="clrJVArrowTailBorder" value="200;200;200;200;200;200"/>
+		
+ 		<!--Traffic Flow Setting-->
+    <param key="speedFree" value="200"/>
+    <param key="clrFree" value="0;255;0;0;255;0"/>
+    <param key="clrFreeBorder" value="0;204;0;0;204;0"/>
+        
+    <param key="speedSluggish" value="45"/>
+	<param key="clrSluggish" value="255;150;90;255;150;90"/>
+	<param key="clrSluggishBorder" value="230;140;40;230;140;40"/>
+
+        
+     <param key="speedSlow" value="20"/>
+     <param key="clrSlow" value="255;24;24;255;24;24"/>
+	 <param key="clrSlowBorder" value="168;0;0;168;0;0"/>
+
+     <param key="speedClose" value="2"/>
+     <param key="clrClose" value="0;0;0;0;0;0"/>
+     <param key="clrCloseBorder" value="102;102;102;102;102;102"/>
+     
+		<param key="clr2dTree" value="125;125;60;125;125;60"/>
+	</GlobalGroup>
+<EecSetting>
+        <height name="0">
+            <clrFill>181;222;129;181;222;129</clrFill>
+            <clrBorder>160;72;72;255;150;98</clrBorder>
+            <clrText>100;0;0;150;0;0</clrText>
+            <widthBorder>2</widthBorder>
+            <fontSize>22</fontSize>
+        </height>
+</EecSetting>
+        <subway>
+            <back_size w="75" h="75"/>
+            <flag_size w="20" h="20"/>
+            <flag_hub_size w="45" h="45"/>
+            <back_color_fill value="155;165;200;155;165;200;"/>
+            <back_color_bound value="85;85;115;85;85;115;"/>
+            <back_hub_color_bound value="255;255;255;255;255;255;"/>
+            <back_borderWidth value="4"/>
+            <back_hub_borderWidth value="4"/>
+            <back_alpha value="128"/>
+            <flag_color value="255;255;255;255;255;255;"/>
+        </subway>
+
+</MapSetting>
