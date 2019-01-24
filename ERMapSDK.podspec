@@ -16,7 +16,7 @@ s.license      = { :type => "MIT", :file => "LICENSE" }   #开源协议
 s.author             = { "chenyueqing" => "cyq502@sina.com" }  #作者
 s.platform     = :ios, "8.0"                  #支持的平台和版本号
 s.source       = { :git => "https://github.com/chenyq502/ERMapSDK.git", :tag => "0.0.1" }         #存储库的git地址，以及tag值
-s.source_files  =  "ERMapSDK/MapDemo/**/*.{h,m}" #需要托管的源代码路径
+s.source_files  =  "ERMapSDK/MapDemo/MapDemo/*.{h,m}" #需要托管的源代码路径
 s.requires_arc = true #是否支持ARC
 #s.dependency "Masonry", "~> 1.0.0"    #所依赖的第三方库，没有就不用写
 end
